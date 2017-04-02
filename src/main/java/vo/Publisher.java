@@ -3,13 +3,13 @@ package vo;
 /**
  * Created by Karl Evald on 17.02.2017.
  */
-public class Author extends StringVoBase {
+public class Publisher extends StringVoBase {
 
-    public Author(final String value) {
+    public Publisher(final String value) {
         super(value);
     }
 
-    public Author(final int value) {
+    public Publisher(final int value) {
         super(value);
     }
 }

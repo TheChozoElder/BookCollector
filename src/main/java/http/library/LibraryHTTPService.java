@@ -1,4 +1,4 @@
-package http.najonalbiblioteket;
+package http.library;
 
 import vo.ISBN;
 
@@ -9,7 +9,7 @@ import java.net.URL;
 /**
  * Created by Karl Evald on 17.02.2017.
  */
-public class NasjonalBiblioteketHTTPService {
+public class LibraryHTTPService {
 
     public String getBookByISBN(final ISBN isbn) {
 

@@ -12,4 +12,5 @@ public class ISBN extends StringVoBase {
     public ISBN(final int value) {
         super(value);
     }
+
 }
