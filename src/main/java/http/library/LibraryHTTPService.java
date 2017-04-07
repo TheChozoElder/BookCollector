@@ -1,5 +1,9 @@
 package http.library;
 
+import com.squareup.okhttp.HttpUrl;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
 import vo.ISBN;
 
 import java.io.IOException;
@@ -13,19 +17,23 @@ public class LibraryHTTPService {
 
     public String getBookByISBN(final ISBN isbn) {
 
-        final StringBuilder uri = new StringBuilder()
-                .append("http://www.nb.no/services/search/v2/search?q=isbn:")
-                .append(isbn.getValue());
+        OkHttpClient client = new OkHttpClient();
+
+        HttpUrl.Builder urlBuilder = HttpUrl.parse("http://www.nb.no/services/search/v2/search").newBuilder();
+
+        urlBuilder.addQueryParameter("q", "9788203294709");//isbn.getValue());
+        String url = urlBuilder.build().toString();
+
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
 
         try {
-            final URL url = new URL(uri.toString());
-            final HttpURLConnection connection;
-            connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("GET");
-            connection.setRequestProperty("Accept", "application/xml");
+            Response response = client.newCall(request).execute();
 
+            String dtar = response.body().string();
             return null;
-        } catch (final IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return null;
